@@ -1,8 +1,8 @@
 import './App.css';
 //importar css
 import FirstComponent from './components/FirstComponent';
-import MyComponent from './components/MyComponent';
 import TemplateExpression from './components/TemplateExpression';
+import Challenge from './components/Challenge';
 
 function App() {
   return (
@@ -10,7 +10,8 @@ function App() {
       <h1 className="hello" >Hello-There</h1> {/*General Kenobi */}
       <FirstComponent />
       <TemplateExpression />
-      <MyComponent />
+      <br />
+      <Challenge />
     </div>
   );
 }

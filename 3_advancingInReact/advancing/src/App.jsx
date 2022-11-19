@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
 import City from './assets/city.jpg';

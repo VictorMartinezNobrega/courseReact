@@ -1,21 +1,22 @@
 .App {
   display: flex;
-}
 
-.Space {
-  text-align: center;
-  border: solid 2px gray;
-  border-radius: 5pt;
-  padding: 2%;
-  margin: 1%;
-}
-
-.Space2 {
-  text-align: center;
-  border: solid 2px gray;
-  border-radius: 5pt;
-  padding: 2%;
-  margin: 1%;
+  .Space {
+    text-align: center;
+    border: solid 2px gray;
+    border-radius: 5pt;
+    padding: 2%;
+    margin: 1%;
+  }
+  
+  .Space2 {
+    text-align: center;
+    border: solid 2px gray;
+    border-radius: 5pt;
+    padding: 2%;
+    margin: 1%;
+  }
+  
 }
 
 @media (prefers-reduced-motion: no-preference) {

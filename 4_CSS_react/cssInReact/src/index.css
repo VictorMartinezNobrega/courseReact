@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica;
+  padding-bottom: 500px;
+}
+/*oque eu estilizo aqui vai para todos os componentes*/
+h1 {
+  color: red;
+}
+
+.typewhite {
+  background-color: bisque;
+  color: black;
+  border: solid black 1px;
+}
+.typedark {
+  background-color: black;
+  color: white;
+  border: solid white 1px;
+}

@@ -81,7 +81,7 @@ function App() {
               //Pega o array. map meio que nome muda pra car
               //imprime o componente fazendo um loop com todos os valores do novo array car passando como se fosse props utilizando .oque tem nele
               //Imprime varias vezes sem precisar faazer varios como de cima
-              <CarDetails
+              <CarDetails             //tem quer ter as chaves ao receber as props no comp!!!!!!!!!
                 key={car.id} //Quando se usa loop o React precisa de um key!!!!!!!!
                 brand={car.brand}
                 km={car.km}
@@ -119,7 +119,7 @@ function App() {
       {/*!!!!!!!!!!!!!!DESAFIO!!!!!!!!!!!!! */}
       <div className='Space'>
         {peaple.map((peaple) => (
-          <UserDatails 
+          <UserDatails                //tem quer ter as chaves ao receber as props no comp!!!!!!!!!
             key={peaple.id}
             name={peaple.nome}
             age={peaple.idade}

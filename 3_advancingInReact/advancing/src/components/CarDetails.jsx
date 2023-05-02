@@ -1,6 +1,7 @@
 import React from 'react';
 
 const CarDetails = ({brand, km, color, newCar}) => {
+              //tem que ter essas chaves!!!!!!!!!!!!
 
   let statusCar
   if(km > 50000) {

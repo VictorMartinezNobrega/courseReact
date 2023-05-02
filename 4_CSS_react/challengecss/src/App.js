@@ -1,23 +1,31 @@
-import logo from './logo.svg';
 import './App.css';
+import CarDetails from './components/CarDetails';
 
 function App() {
+
+  const cars = [
+    { id: 0, brand: 'Toyota', hp: 324, traction: 'RWD' },
+    { id: 1, brand: 'Nissan', hp: 280, traction: 'AWD' },
+    { id: 2, brand: 'Honda', hp: 273, traction: 'RWD' },
+    { id: 3, brand: 'Mazda', hp: 255, traction: 'RWD' },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>
+        Concessionária HELLO THERE!
+      </h1>
+      <p>Venha conhecer mais sobre carros 'U'</p>
+      <div>
+        {cars.map((cars) => (
+          <CarDetails
+            key={cars.id}
+            brand={cars.brand}
+            hp={cars.hp}
+            traction={cars.traction}
+          />
+        ))}
+      </div>
     </div>
   );
 }

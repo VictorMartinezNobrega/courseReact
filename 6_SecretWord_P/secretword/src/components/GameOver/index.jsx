@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.scss';
 
-const index = ({retry}) => {
+const Index = ({retry}) => {
   return (
     <div>
       <h1>Game Over ;-;</h1>
@@ -10,4 +10,4 @@ const index = ({retry}) => {
   )
 }
 
-export default index;
+export default Index;

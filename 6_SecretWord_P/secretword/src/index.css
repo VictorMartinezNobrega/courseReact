@@ -6,7 +6,7 @@ body {
     margin: 0;
     padding: 0;
     background: linear-gradient(180deg, rgb(143, 143, 143) 0%, rgb(0, 0, 0) 100%);
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 button {

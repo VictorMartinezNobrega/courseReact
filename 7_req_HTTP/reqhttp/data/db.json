@@ -19,6 +19,21 @@
       "name": "Tenis",
       "price": "150",
       "id": 4
+    },
+    {
+      "name": "chinelo",
+      "price": "50",
+      "id": 5
+    },
+    {
+      "name": "mouse",
+      "price": "90",
+      "id": 6
+    },
+    {
+      "name": "lapis",
+      "price": "1",
+      "id": 7
     }
   ]
 }

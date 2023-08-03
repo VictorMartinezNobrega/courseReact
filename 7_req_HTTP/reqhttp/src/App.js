@@ -1,18 +1,24 @@
 import './App.css';
 import { useState, useEffect } from 'react';
+import { useFetch } from './hooks/useFetch'; //4 importa nosso hook !!!!!!
 
 function App() {
 
-  const [products, setProducts] = useState([]);
+  const url = "http://localhost:3000/products";
+
+  const [products, setProducts] = useState([]); //não utiliza por conta do modelo novo hook custom
 
   const [ name, setName ] = useState('');
   const [ price, setPrice ] = useState('');
 
-  const url = "http://localhost:3000/products";
+  //4 - recebendo os dados do back de uma maneira alternativa da comentada abaixo
+  const { data: itens } = useFetch(url);
+  //importando o data que veio do nosso hook custom com a url passada quando rodou a var
+    //renoamando o data para itens para utiliza-lo mais diretamente na aplicação
 
-  //resgatando dados
+  //resgatando dados //4- comentado para ultilizar um hook custom feito por mim, para puxar os dados auto
 
-  useEffect(() => {
+  /*useEffect(() => {
     //async pesquisar sobre
     async function fetchData() {
     const res = await fetch(url);//res geralmente se refere a respota do banco, await espera que p fecth pegue os dados passados pela URL
@@ -24,11 +30,11 @@ function App() {
 
   fetchData();
 
-  }, []);
+  }, []);*/
   
   //add produtos
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { //function para enviar os dados para "db"
     e.preventDefault()
 
     const product = {
@@ -46,13 +52,25 @@ function App() {
     })//utilizando a url como se fosse o get, mudandopara post, falando tipo que vamos mandar, tranformando oque vamos enviar em json
 
     console.log(product)
+
+    //3 carregamento dinamico
+
+    const addedProduct = await res.json();
+
+    setProducts((prevProducts) => [...prevProducts, addedProduct]);
+
+    setName("");
+    setPrice("");
+
   }
+  
 
   return (
     <div className="App">
       <h1>Hello there</h1>
       <ul>
-        {products.map((product) => ( //imprime normal usando o state com o dado
+        {/*Necessario essa validação pois os itens vem nulo primeiramente, map só acontece quando 'itens' for preechido pelos dados passados na url*/}
+        {itens && itens.map((product) => ( //imprime normal usando o state com o dado
           <li key={product.id}>{product.name} - R${product.price}</li>
         ))}
       </ul>

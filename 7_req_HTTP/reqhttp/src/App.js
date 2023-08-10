@@ -6,13 +6,13 @@ function App() {
 
   const url = "http://localhost:3000/products";
 
-  const [products, setProducts] = useState([]); //não utiliza por conta do modelo novo hook custom
+  //const [products, setProducts] = useState([]); //não utiliza por conta do modelo novo hook custom
 
   const [ name, setName ] = useState('');
   const [ price, setPrice ] = useState('');
 
   //4 - recebendo os dados do back de uma maneira alternativa da comentada abaixo
-  const { data: itens } = useFetch(url);
+  const { data: itens, httpConfig } = useFetch(url);
   //importando o data que veio do nosso hook custom com a url passada quando rodou a var
     //renoamando o data para itens para utiliza-lo mais diretamente na aplicação
 
@@ -43,7 +43,7 @@ function App() {
     }
 
       //requisição
-    const res = await fetch(url, { //esse é diferente pq vamos ter um POST, GET é criado automaticamente como no outro exemplo
+   /* const res = await fetch(url, { //esse é diferente pq vamos ter um POST, GET é criado automaticamente como no outro exemplo
         method: "POST", //metodo que vamos usar
         headers: {  //podemos aqui enviar para a requisição que tipo de conteudo estamos manipulando
           "Content-Type" : "application/json" //no caso enviando um JSON
@@ -57,7 +57,10 @@ function App() {
 
     const addedProduct = await res.json();
 
-    setProducts((prevProducts) => [...prevProducts, addedProduct]);
+    setProducts((prevProducts) => [...prevProducts, addedProduct]); */
+
+    //5 - Refatorando POST
+    httpConfig(product, "POST");
 
     setName("");
     setPrice("");

@@ -37,6 +37,11 @@ function App() {
   const handleSubmit = async (e) => { //function para enviar os dados para "db"
     e.preventDefault()
 
+    if(name === "" || price === "") {
+      console.log("E PORA")
+      return
+    }
+
     const product = {
       name, //name: name - quando valor da chave é o mesmo do valor, pode se por somente o nome e ja se iguala as variaveis state
       price,
@@ -88,6 +93,7 @@ function App() {
             <input type='number' value={price} name='price' onChange={(e) => setPrice(e.target.value)}></input>
           </label>
           <input type='submit' value={'Criar'}></input>
+          <p id='alert'>*Insira dados corretos</p>
         </form>
       </div>
     </div>

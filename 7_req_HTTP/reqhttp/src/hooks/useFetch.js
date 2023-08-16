@@ -19,11 +19,10 @@ export const useFetch = (url) => {
                     "Content-Type" : "application/json"
                 },
                 body: JSON.stringify(data), //recebe data lá de onde a function é chamada
-            })
-
+            });
             setMethod(method);// recebe o "POST" de lá onde a function é chamada
-        }
-    }
+        };
+    };
 
     //4 - Refatorando GET
     useEffect(() => { //querendo ex uma só vez
@@ -34,7 +33,7 @@ export const useFetch = (url) => {
             const json = await res.json();//transforma resultado da var em json
 
             setData(json); //seta esse json em data, e data é onde os dados todos vão para o componente para serem exibidos
-        }
+        };
 
         fetchData(); //roda a function
     }, [url, callFetch]); //dependencia dele o url, se mudar o url ele executara novamente, por isso sempre que mandamos algo para o banco, re aparece na tela já att
@@ -46,17 +45,17 @@ export const useFetch = (url) => {
         if(method === "POST") { //com essa checagem da para fazer muita coisa, identificar EX: UPDATE, DELETE
             let fetchOptions = [url, config] //dinamico, posso pegar uma url diferente/ ou config diferentes onde vai o body, onde vai os dados
 
-            const res = await fetch(...fetchOptions)
+            const res = await fetch(...fetchOptions);
 
-            const json = await res.json()
+            const json = await res.json();
 
             setCallFecth(json);//modificando aqui, uma dependencia do useEffect GET, logo rodando fetchData, automaticamente refazendo um novo get para exebir o novo dado
-        }
-      }
+        };
+      };
 
       httpRequest();
 
-    }, [config, method, url]) //dependencia config, ent sempre que houver uma alteração na config, chamará esse useEffect, ou qualquer outro parametro para chamar
+    }, [config, method, url]); //dependencia config, ent sempre que houver uma alteração na config, chamará esse useEffect, ou qualquer outro parametro para chamar
     //novamente esse processo
     
     return {data , httpConfig}; //retorna data para quem chama-la

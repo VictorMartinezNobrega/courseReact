@@ -11,6 +11,9 @@ export const useFetch = (url) => {
     const [method, setMethod] = useState(null); //vai me dizer qual metodo estarei ultilizando na minha função ex: GET or POST
     const [callFetch , setCallFecth] = useState(false); //vai entrar ali junto com use effetc para mapear ele, sempre que for alterar ira chamar fetch dnv
 
+    //6 - Loading
+    const [loading, setLoading] = useState(false); //começa false
+
     const httpConfig = (data, method) => { //exporto esse aqui, pq queremos o processo e não o resultado, o resultado é mostrado no GET
         if(method === "POST") {
             setConfig({  //como esse cara aqui muda a configuração /exporto a funtion então
@@ -28,11 +31,13 @@ export const useFetch = (url) => {
     useEffect(() => { //querendo ex uma só vez
 
         const fetchData = async () => {
+            setLoading(true); //antes do get acontecer, o loading é true
             const res = await fetch(url);//res geralmente se refere a respota do banco, await espera que p fecth pegue os dados passados pela URL
 
             const json = await res.json();//transforma resultado da var em json
 
             setData(json); //seta esse json em data, e data é onde os dados todos vão para o componente para serem exibidos
+            setLoading(false); //após get ser feito com sucesso, louding é false
         };
 
         fetchData(); //roda a function
@@ -58,5 +63,5 @@ export const useFetch = (url) => {
     }, [config, method, url]); //dependencia config, ent sempre que houver uma alteração na config, chamará esse useEffect, ou qualquer outro parametro para chamar
     //novamente esse processo
     
-    return {data , httpConfig}; //retorna data para quem chama-la
+    return {data , httpConfig, loading}; //retorna data para quem chama-la
 };

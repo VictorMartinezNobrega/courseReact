@@ -12,7 +12,7 @@ function App() {
   const [ price, setPrice ] = useState('');
 
   //4 - recebendo os dados do back de uma maneira alternativa da comentada abaixo
-  const { data: itens, httpConfig } = useFetch(url);
+  const { data: itens, httpConfig, loading } = useFetch(url);
   //importando o data que veio do nosso hook custom com a url passada quando rodou a var
     //renoamando o data para itens para utiliza-lo mais diretamente na aplicação
 
@@ -33,20 +33,21 @@ function App() {
   }, []);*/
   
   //add produtos
+  const [pending, setPending] = useState(false);
 
   const handleSubmit = async (e) => { //function para enviar os dados para "db"
     e.preventDefault()
-
-    if(name === "" || price === "") {
-      console.log("E PORA")
-      return
-    }
 
     const product = {
       name, //name: name - quando valor da chave é o mesmo do valor, pode se por somente o nome e ja se iguala as variaveis state
       price,
     }
+    setPending(false);
 
+      if(name === "" || price === "") {
+        setPending(true)
+      return
+    }
       //requisição
    /* const res = await fetch(url, { //esse é diferente pq vamos ter um POST, GET é criado automaticamente como no outro exemplo
         method: "POST", //metodo que vamos usar
@@ -69,6 +70,7 @@ function App() {
 
     setName("");
     setPrice("");
+    setPending(false);
 
   }
   
@@ -76,12 +78,13 @@ function App() {
   return (
     <div className="App">
       <h1>Hello there</h1>
-      <ul>
+      {loading && <p>Carregando dados...</p>}
+      {!loading && <ul>
         {/*Necessario essa validação pois os itens vem nulo primeiramente, map só acontece quando 'itens' for preechido pelos dados passados na url*/}
         {itens && itens.map((product) => ( //imprime normal usando o state com o dado
           <li key={product.id}>{product.name} - R${product.price}</li>
         ))}
-      </ul>
+      </ul>}
       <div className='add-product'>
         <form onSubmit={handleSubmit}>
           <label>
@@ -92,8 +95,9 @@ function App() {
             Preço
             <input type='number' value={price} name='price' onChange={(e) => setPrice(e.target.value)}></input>
           </label>
-          <input type='submit' value={'Criar'}></input>
-          <p id='alert'>*Insira dados corretos</p>
+          {loading && <input type='button' disabled value={'Aguarde!'}></input>}
+          {!loading && <input type='submit' value={'Criar'}></input>}
+          {pending && <p id='alert'>*Insira dados corretos</p>}
         </form>
       </div>
     </div>

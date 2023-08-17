@@ -39,6 +39,36 @@
       "name": "papel",
       "price": "3",
       "id": 8
+    },
+    {
+      "name": "tela",
+      "price": "21",
+      "id": 23
+    },
+    {
+      "name": "caneca",
+      "price": "30",
+      "id": 24
+    },
+    {
+      "name": "capinha",
+      "price": "35",
+      "id": 27
+    },
+    {
+      "name": "hdmi",
+      "price": "12",
+      "id": 29
+    },
+    {
+      "name": "webcam",
+      "price": "60",
+      "id": 30
+    },
+    {
+      "name": "chave",
+      "price": "28",
+      "id": 31
     }
   ]
 }
